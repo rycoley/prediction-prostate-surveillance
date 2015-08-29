@@ -27,3 +27,6 @@ There are R scripts for a combination of two settings: (1) modeling assumptions 
 
 —Batch Scripts—
 R scripts were written to be run on a SGE computing cluster, in order to run multiple chains in parallel or, in the case of cross-validation, multiple folds. Batch scripts are given in a batch-scripts folder to get users an idea of the memory needed, task id setting, etc, but they will need to be considerably modified for an individual users account and platform. 
+
+—Results—
+.csv files with posterior samples are not posted to github due to size. Email rycoley@gmail.com to request.
