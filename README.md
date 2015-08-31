@@ -30,3 +30,6 @@ R scripts were written to be run on a SGE computing cluster, in order to run mul
 
 —Results—
 .csv files with posterior samples are not posted to github due to size. Email rycoley@gmail.com to request.
+
+-CODEBOOK-
+Explains all variables in simulated datasets
