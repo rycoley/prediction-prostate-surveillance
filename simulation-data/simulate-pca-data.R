@@ -235,7 +235,7 @@ write.csv(pt.data,"pt-data-sim.csv")
 
 #get ordered subject variable
 
-pt.data<-pt.data[order(pt.data$obs.eta)]
+pt.data<-pt.data[order(pt.data$obs.eta),]
 pt.data$subj<-c(1:n)
 psa.data$subj<-rep(0,n_obs_psa)
 for(i in 1:n){psa.data$subj[psa.data$id==pt.data$id[i]]<-pt.data$subj[i]}
