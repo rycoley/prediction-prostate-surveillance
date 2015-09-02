@@ -179,6 +179,12 @@ table(pt.data$rc)
 pt.data$obs.eta<-rep(NA,n)
 pt.data$obs.eta[pt.data$rrp==1]<-pt.data$eta.true[pt.data$rrp==1]
 
+for(i in 1:n){
+	if(max(bx.sim$rc[bx.sim$id==i])==1){
+		rc.time<-bx.sim$time[bx.sim$rc==1 & bx.sim$id==i]
+		bx.sim$bx.here[bx.sim$id==i & bx.sim$time>rc.time]<-NA	} }
+
+table(bx.sim$bx.here) 
 
 write.csv(pt.data,"pt-data-sim.csv")
 write.csv(bx.sim,"bx-data-sim.csv")
