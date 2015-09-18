@@ -4,7 +4,6 @@
 
 
 library("lme4")
-library("splines")
 
 
 #get data
@@ -79,9 +78,8 @@ BX<-as.numeric(bx.data$bx.here) #indicator of biopsy in this interval
 subj_bx<-bx.data$subj2
 
 #covariate matrix U for logistic regression predicting biopsy
-#here, age (standardized, ns with df=2), time since diagnosis (ns with df=4), number of previous biopsies, calendar time (standardized around Jan 1, 2005 and ns uwth df=4)
-U.BX.data<-as.matrix(cbind(rep(1,n_bx), bx.data$age.std, bx.data$age.ns, ns(bx.data$time,4), bx.data$num.prev.bx, ns(bx.data$sec.time.std,4)  ))
-(d.U.BX<-dim(U.BX.data)[2]) #12
+U.BX.data<-as.matrix(cbind(rep(1,n_bx), bx.data$age.std, bx.data$age.ns, bx.data$time, bx.data$time.ns, bx.data$sec.time.std, bx.data$sec.time.ns, bx.data$num.prev.bx ))
+(d.U.BX<-dim(U.BX.data)[2]) 
 
 
 
@@ -108,7 +106,7 @@ subj_surg<-data.use$subj2
 
 
 #covariate matrix W for pooled logistic regression predicting surgery
-#here, age (standardized and ns with df=2), time since diagnosis (ns with df=4), calendar time (standardized around Jan 1, 2005 and ns with 3df), number of previous biopsies, previous grade reclassification; interaction with eta and previous RC
-W.SURG.data<-as.matrix(cbind(rep(1,n_surg), data.use$age.std, data.use$age.ns, ns(data.use$time,4), ns(data.use$sec.time.std,3) , data.use$num.prev.bx.rrp, data.use$prev.G7)) #
-(d.W.SURG<-dim(W.SURG.data)[2]) #12
+#here, age (standardized and ns with df=2), time since diagnosis (df=2), calendar time (standardized around Jan 1, 2005 and ns with 3df), number of previous biopsies, previous grade reclassification; interaction with eta and previous RC
+W.SURG.data<-as.matrix(cbind(rep(1,n_surg), data.use$age.std, data.use$age.ns, data.use$time, data.use$time.ns, data.use$sec.time.std, data.use$sec.time.ns, data.use$num.prev.bx.rrp, data.use$prev.G7)) #
+(d.W.SURG<-dim(W.SURG.data)[2]) 
 
