@@ -2,12 +2,12 @@
 Joint modeling of latent prostate cancer state and observed clinical outcomes, for active surveillance of low risk prostate cancer
 
 
-August 29, 2015- This is code accompanying Coley et al. (2015) 
+October 6, 2015- This is code accompanying Coley et al. (2015) 
 "Bayesian Joint Hierarchical Model for Prediction of Latent Health States with Application to Active Surveillance of Prostate Cancer"
 
 
 —DATA—
-Data from Johns Hopkins Active Surveillance cohort is not publicly available, so simulated data is provided in the folder simulation-data. Data was simulated using posterior estimates from fitting the model on the JH AS data. 
+Data from Johns Hopkins Active Surveillance cohort is not publicly available, so simulated data is provided in the folder simulation-data. Data was simulated using posterior estimates from fitting the model on the JH AS data. Explanation of variables in readme.md in this folder.
 
 Note: Since the data generating model is the same as the estimation model, plots of model fit will be overly optimistic. In particular, the CV-AUC for latent state is considerably higher.
 
