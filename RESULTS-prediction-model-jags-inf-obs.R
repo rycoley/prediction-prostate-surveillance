@@ -18,7 +18,8 @@ library("splines")
 ### DEFINE FUNCTIONS
 expit<-function(x){return(exp(x)/(1+exp(x)))}
 
-color.post<-c("blue","red","green","orange","navy","yellow","purple","dark green","sky blue","magenta")
+#each color represents one starting seed/separate MCMC chain
+color.post<-c("blue","red","green","orange","navy")
 
 plot.post.trace<-function(par,nc,n.row, n.col){
 	num.ea<-dim(par)[1]/nc
