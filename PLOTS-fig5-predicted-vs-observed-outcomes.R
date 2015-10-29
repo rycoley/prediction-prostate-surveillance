@@ -51,19 +51,19 @@ subj_surg<-data_use$subj
 ### LOAD MCMC RESULTS
 
 ## biopsy predictions
-p.bx<-read.csv(paste("results/jags-prediction-iop-p_bx-1.csv",sep=""))
+p.bx<-read.csv(paste("results/jags-prediction-iop-p_bx-1-reduced.csv",sep=""))
 dim(p.bx)
 p.bx<-as.matrix(p.bx[,2:(n_bx+1)])
 p.bx.mean<-apply(p.bx,2,mean)
 
 ## reclassification predictions
-p.rc<-read.csv(paste("results/jags-prediction-iop-p_rc-1.csv",sep=""))
+p.rc<-read.csv(paste("results/jags-prediction-iop-p_rc-1-reduced.csv",sep=""))
 dim(p.rc)
 p.rc<-as.matrix(p.rc[,2:(n_rc+1)])
 p.rc.mean<-apply(p.rc,2,mean)
 
 ##sugery predictions
-p.surg<-read.csv(paste("results/jags-prediction-iop-p_surg-2.csv",sep=""))
+p.surg<-read.csv(paste("results/jags-prediction-iop-p_surg-1-reduced.csv",sep=""))
 dim(p.surg)
 p.surg<-as.matrix(p.surg[,2:(n_surg+1)])
 p.surg.mean<-apply(p.surg,2,mean)

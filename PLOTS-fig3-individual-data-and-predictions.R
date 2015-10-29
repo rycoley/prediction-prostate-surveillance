@@ -64,11 +64,11 @@ for(i in 2:5){
 	res<-read.csv(paste("results/jags-prediction-iop-beta-",i,".csv",sep=""))
 	bet<-c(bet,res[,2])}
 
-b_vec<-read.csv(paste("results/jags-prediction-iop-b_vec-1.csv",sep=""))
+b_vec<-read.csv(paste("results/jags-prediction-iop-b_vec-1-reduced.csv",sep=""))
 b_int<-as.matrix(b_vec[,(pred_ids)+1])
 b_slope<-as.matrix(b_vec[,(n+1+pred_ids)])
 for(i in 2:5){
-	res<-read.csv(paste("results/jags-prediction-iop-b_vec-",i,".csv",sep=""))
+	res<-read.csv(paste("results/jags-prediction-iop-b_vec-",i,"-reduced.csv",sep=""))
 	b_int<-rbind(b_int, res[,(pred_ids)+1])
 	b_slope<-rbind(b_slope,res[,(n+1+pred_ids)])}
 
@@ -271,4 +271,7 @@ for(g in 2:10){
 	}
 
 dev.off()
+
+
+##Plot labels can be added in Powerpoint/Keynote or Adobe Illustrator
 
