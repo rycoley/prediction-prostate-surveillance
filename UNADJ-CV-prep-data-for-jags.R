@@ -68,7 +68,6 @@ mod.lmer<-lmer(log_psa~ vol_std + (1+ age_std |id), data=psa_data)
 
 ###bx data
 
-
 #outcome model (logistic regression for reclassification)
 #only use records where a biopsy occurred
 rc_data<-data_use[data_use$bx_here==1 & !is.na(data_use$bx_here),] 

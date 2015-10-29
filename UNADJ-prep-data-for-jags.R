@@ -5,23 +5,23 @@
 
 
 #get data
-pt.data<-read.csv("simulation-data/pt-data-sim.csv")
+pt_data<-read.csv("simulation-data/pt-data-sim.csv")
 #this contains one record per patient
 #patients are ordered so that those with surgery, i.e. eta observed, occur first. 
 
-psa.data<-read.csv("simulation-data/psa-data-sim.csv")
+psa_data<-read.csv("simulation-data/psa-data-sim.csv")
 #this contains one record per psa observations per patient
 
-data.use<-read.csv("simulation-data/bx-data-sim.csv")
+data_use<-read.csv("simulation-data/bx-data-sim.csv")
 #this contains one record per annual interval for each patient until surgery or censoring
 
 
 #Before call to JAGS, get the data into simple matrices and vectors to send to JAGS
-(n<-dim(pt.data)[1]) #there are 1000 patients
+(n<-dim(pt_data)[1]) #there are 1000 patients
 
 #get observed latent class for those with surgery
-eta.data<-pt.data$obs.eta
-(n_eta_known<-sum(!is.na(eta.data))) #214
+eta_data<-pt_data$obs_eta
+(n_eta_known<-sum(!is.na(eta_data))) #214
 
 
 #remove last 5 years of data for selected patients, will then use these to demonstrate predictions

@@ -1,13 +1,18 @@
-
 ### Rebecca Yates Coley rycoley@gmail.com
 ### Code for "Bayesian Joint Hierarchical Model for Prediction of Latent Health States with Application to Active Surveillance of Prostate Cancer"
 ### This code is used to call the JAGS model that allows for an informative observation process (IOP)
 
 
-### WORKFLOW: load packages, define data, initialize model parameters, define MCMC settings, run JAGS and save output
+### WORKFLOW: load packages, define data, initialize model parameters, define MCMC settings, run JAGS and save output in results folder
+#***create folder for results before running***
 
+rm(list=ls())
 
 ### LOAD NECESSARY PACKAGES
+list.of.packages <- c("lme4", "bayesm", "R2jags")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, dependencies=T)
+
 library("lme4")
 library("bayesm")
 library("R2jags")

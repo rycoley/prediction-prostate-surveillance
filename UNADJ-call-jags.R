@@ -1,19 +1,18 @@
 
-#rm(list=ls())
-#setwd("/Users/ryc/Dropbox/inhealth/prediction-model-final/for-git")
-#source("UNADJ-jags-model.R")
-#set.seed(1)
-##get rid of above before posting on git hub
-
 ### Rebecca Yates Coley rycoley@gmail.com
 ### Code for "Bayesian Joint Hierarchical Model for Prediction of Latent Health States with Application to Active Surveillance of Prostate Cancer"
 ### This code is used to call the UNADJUSTED JAGS model, that is, it does not allow for an informative observation process (IOP)
 
 
-### WORKFLOW: load packages, define data, initialize model parameters, define MCMC settings, run JAGS and save output
+### WORKFLOW: load packages, define data, initialize model parameters, define MCMC settings, run JAGS and save output in results folder
+#***create folder for results before running***
 
 
 ### LOAD NECESSARY PACKAGES
+list.of.packages <- c("lme4", "bayesm", "R2jags")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, dependencies=T)
+
 library("lme4")
 library("bayesm")
 library("R2jags")
@@ -84,7 +83,6 @@ for(j in 1:length(out$sims.list)){
 ### users can edit this part of the code for their own system
 (SEED<-as.numeric(Sys.getenv("SGE_TASK_ID")))
 do_one(seed=SEED)
-
 
 
 

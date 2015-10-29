@@ -98,7 +98,7 @@ apply(V_RC_data,2,summary)
 
 #logistic regression for surgery (radical retropubic prostatectomy)
 #this uses all records in data.use, because patients always at risk of choosing surgery
-SURG<-as.numeric(data_use$rrp)
+SURG<-as.numeric(data_use$surg)
 (n_surg<-dim(data_use)[1])
 subj_surg<-data_use$subj2
 
