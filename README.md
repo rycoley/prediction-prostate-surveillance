@@ -10,13 +10,15 @@ October 29, 2015- This is code accompanying Coley et al. (2015)
 Data from Johns Hopkins Active Surveillance cohort is not publicly available, so simulated data is provided in the folder simulation-data. Data was simulated using posterior estimates from fitting the model on the JH AS data. Explanation of variables in codebook.md in simulation-data folder.
 
 
-—R Scripts—
+—R Scripts for model estimation—
 There are R scripts for a combination of two settings: (1) modeling assumptions and (2) code aim:
 
 (1) Modeling assumptions
 
 (a) IOP- Model is fit allowing for an Informative Observation Process (IOP), as described in the paper and
+
 (b) UNADJ- Model assumes biopsy and surgery information is missing as random, so it is unadjusted for the possibility of IOP.
+
 
 (2) Code Aim
 
@@ -33,4 +35,10 @@ R scripts were written to be run on a SGE computing cluster, in order to run mul
 
 
 -PLOTS-
-Figures from paper recreated with simulated data. R scripts entitled PLOTS-… create these figures.
+Figures from paper recreated with simulated data. R scripts entitled PLOTS-… create these figures and save them in the plots folder.
+
+
+-RESULTS-
+RESULTS-prediction-model-jags-inf-obs.R summarizes posterior results and creates trace plots and posterior densities for each parameter (saved in plots/results-check).
+
+RESULTS-reduce-size.R takes posterior samples of patient-level random effects and posterior fitted probabilities for observed outcomes and rounds to three significant digits. (The R/JAGS script samples and saves values up to 7 sig digs, but these files can be cumbersome to upload on github. This code makes them more manageable. Only rounded versions of these results are in this repo, but the code supplied will produce the larger files.)
