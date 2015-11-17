@@ -9,6 +9,8 @@ list.of.packages <- c("splines")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages, dependencies=T)
 
+library("splines")
+
 ### DEFINE FUNCTIONS
 expit<-function(x){return(exp(x)/(1+exp(x)))}
 
