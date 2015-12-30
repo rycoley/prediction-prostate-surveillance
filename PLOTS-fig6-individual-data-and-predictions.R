@@ -1,7 +1,7 @@
 
 ### Rebecca Yates Coley rycoley@gmail.com
-### Code for "Bayesian Joint Hierarchical Model for Prediction of Latent Health States with Application to Active Surveillance of Prostate Cancer"
-### This code is used to pull in data for individuals, MCMC results of trajectories, and make individual-level plots, as seen in Figure 3 
+### Code for ""A Bayesian Hierarchical Model for Prediction of Latent Health States from Multiple Data Sources with Application to Active Surveillance of Prostate Cancer"
+### This code is used to pull in data for individuals, MCMC results of trajectories, and make individual-level plots, as seen in Figure 6 
 
 
 ### WORKFLOW: Load libraries, load data characteristics, define functions, load data for indviduals, load posteriors for individuals, make individual-level predicitons, plot individual data and trajectories
@@ -212,7 +212,7 @@ put.on.scale<-function(value,y.min, y.max){
 
 
 
-pdf("plots/figure3-individual-data-and-predictions.pdf", height=10, width=8)
+pdf("plots/figure6-individual-data-and-predictions.pdf", height=10, width=8)
 
 par(mfrow=c(4,3), mar=c(2.5,2,3,2.5))
 for(i in 1:12){

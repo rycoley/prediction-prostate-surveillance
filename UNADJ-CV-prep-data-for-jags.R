@@ -1,5 +1,5 @@
 ### Rebecca Yates Coley rycoley@gmail.com
-### Code for "Bayesian Joint Hierarchical Model for Prediction of Latent Health States with Application to Active Surveillance of Prostate Cancer"
+### Code for "A Bayesian Hierarchical Model for Prediction of Latent Health States from Multiple Data Sources with Application to Active Surveillance of Prostate Cancer"
 ### This code is used to pull in and format all the data needed to run the jags model that is UNADJUSTED for the possibility of an informative observation process (IOP) when doing CROSS-VALIDATION, meaning that some data on observed latent state will be excluded
 
 

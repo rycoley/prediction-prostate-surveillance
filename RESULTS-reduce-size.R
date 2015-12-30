@@ -2,7 +2,7 @@
 rm(list=ls())
 
 ### Rebecca Yates Coley rycoley@gmail.com
-### Code for "Bayesian Joint Hierarchical Model for Prediction of Latent Health States with Application to Active Surveillance of Prostate Cancer"
+### Code for "A Bayesian Hierarchical Model for Prediction of Latent Health States from Multiple Data Sources with Application to Active Surveillance of Prostate Cancer"
 ### This code is used to pull in very large results files and reduce number of digits saved so that (1) the file is small enough to post on github and (2) producing figures is faster
 ## Note: only reduced result files are posted on github. JAGS scripts on github can be used to produce larger files
 
