@@ -1,9 +1,9 @@
 # prediction-prostate-surveillance
 Joint modeling of latent prostate cancer state and observed clinical outcomes, for active surveillance of low risk prostate cancer
 
-May 20, 2016- This is code accompanying ANONYMOUS et al. (2016) 
+May 20, 2016- This is code accompanying Coley, RY et al. (2016) 
 “A Bayesian Hierarchical Model for Prediction of Latent Health States from Multiple Data Sources with Application to Active Surveillance of Prostate Cancer"
-
+rycoley@gmail.com
 
 This README contains descriptions of:
 Data

@@ -1,4 +1,4 @@
-### NAME AND EMAIL REDACTED
+### Rebecca Yates Coley rycoley@gmail.com
 ### Simulation code for "Bayesian Joint Hierarchical Model for Prediciton of Latent Health States with Application to Active Surveillance of Prostate Cancer"
 ### This code is used to simulate a single dataset. 
 

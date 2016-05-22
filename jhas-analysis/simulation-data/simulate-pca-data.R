@@ -1,4 +1,4 @@
-### NAME AND EMAIL REDACTED
+### Rebecca Yates Coley rycoley@gmail.com
 ### Code for "A Bayesian Hierarchical Model for Prediction of Latent Health States from Multiple Data Sources with Application to Active Surveillance of Prostate Cancer"
 ### This code simulates data in order to demonstrate the joint modeling approach outlined in REDACTED et al (2016) as well as the importance sampling algorithm outlined in REDACTED et al (2015).
 ### Data is generated using posterior estimates from fitting the joint model to data from the Johns Hopkins Active Surveillance cohort.

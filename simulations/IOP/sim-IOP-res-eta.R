@@ -1,4 +1,4 @@
-### NAME AND EMAIL REDACTED
+### Rebecca Yates Coley rycoley@gmail.com
 ### Code for "A Bayesian Hierarchical Model for Prediction of Latent Health States from Multiple Data Sources with Application to Active Surveillance of Prostate Cancer"
 ### This code is used to summarize predictive accuracy of true state predictions from the biopsy and surgery IOP model
 
