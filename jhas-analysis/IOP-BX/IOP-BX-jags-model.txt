@@ -1,0 +1,86 @@
+model {
+
+###PRIORS FOR LATENT CLASS MODEL
+
+#flat prior on probability of latent class membership for all subjects
+p_eta ~ dbeta(1,1)
+
+
+###PRIORS FOR MIXED MODEL
+#model correlated random effects distribution
+
+for (index in 1:d_Z) {
+	xi[index]~dunif(0,100)
+	for(k in 1:K){
+		mu_raw[index,k]~dnorm(0, 0.01) 
+		mu[index,k]<-xi[index] *mu_raw[index,k]}  }
+
+for(k in 1:K){
+	mu_int[k] <- mu[1,k] 
+	mu_slope[k] <- mu[2,k]}
+
+#same covariance matrix (Sigma_B) across latent classes
+Tau_B_raw ~ dwish(I_d_Z[,], (d_Z+1)) 
+Sigma_B_raw[1:d_Z, 1:d_Z] <- inverse(Tau_B_raw[1:d_Z, 1:d_Z])	
+for (index in 1:d_Z){
+		sigma[index]<-xi[index]*sqrt(Sigma_B_raw[index,index]) }
+
+sigma_int <- sigma[1] 
+sigma_slope <- sigma[2] 
+
+rho_int_slope <- Sigma_B_raw[1,2]/sqrt(Sigma_B_raw[1,1] * Sigma_B_raw[2,2])
+cov_int_slope <- rho_int_slope*sigma_int*sigma_slope 
+
+##residual variance, independent of correlated random effects, same across classes
+sigma_res ~ dunif(0, 1) 
+tau_res <- pow(sigma_res,-2)
+
+##fixed effects
+for(index in 1:d_X){
+	beta[index] ~ dnorm(0,0.01)}
+
+
+###PRIORS FOR OUTCOME MODEL
+#last element in each gamma is coefficient for class membership eta=1
+for(index in 1:(d_U_BX+1)){nu_BX[index] ~ dnorm(0,0.01)}
+for(index in 1:(d_V_RC+1)){gamma_RC[index] ~ dnorm(0,0.01)}
+
+
+###LIKELIHOOD
+
+##latent variable for true cancer state
+for(i in 1:n_eta_known){
+	eta_data[i] ~ dbern(p_eta)
+	eta[i] <- eta_data[i] + 1} #this is for those with path reports from surgery, eta known 
+
+for(i in (n_eta_known+1):n){
+	eta_hat[(i-n_eta_known)] ~ dbern(p_eta)
+	eta[i] <- eta_hat[(i-n_eta_known)] + 1}  #for those without surgery
+
+##linear mixed effects model for PSA 
+#generate random intercept and slope for individual given latent class
+for (i in 1:n) {
+	B_raw[i,1:d_Z] ~ dmnorm(mu_raw[1:d_Z,eta[i]], Tau_B_raw[1:d_Z, 1:d_Z])
+	for(index in 1:d_Z){b_vec[i,index] <- xi[index]*B_raw[i,index]} }
+
+#fit LME
+for(j in 1:n_obs_psa){ 
+	mu_obs_psa[j] <- inprod(b_vec[subj_psa[j],1:d_Z], Z[j,1:d_Z])  + (beta[1]*X[j,1:d_X]) 
+	Y[j] ~ dnorm(mu_obs_psa[j], tau_res) }
+
+
+##all biopsy data
+
+#logistic regression for biopsy
+for(j in 1:n_bx){
+	logit(p_bx[j]) <-inprod(nu_BX[1:d_U_BX], U_BX[j,1:d_U_BX]) + nu_BX[(d_U_BX+1)]*equals(eta[subj_bx[j]],2)  
+	BX[j] ~ dbern(p_bx[j]) }
+
+#logistic regression for reclassification 	
+for(j in 1:n_rc){
+	logit(p_rc[j]) <-inprod(gamma_RC[1:d_V_RC], V_RC[j,1:d_V_RC]) + gamma_RC[(d_V_RC+1)]*equals(eta[subj_rc[j]],2) 
+	RC[j] ~ dbern(p_rc[j]) }
+
+
+	
+ }
